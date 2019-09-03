@@ -174,7 +174,7 @@ export default class App extends React.Component {
           </div>
           <div className="col-md-8 mb-4 align-self-center" />
           <div className="col-md-12">
-            <h4 className="Righteous">Last 12 Post</h4>
+            <h4>Last 12 Post</h4>
             <MediasTable data={this.state.Result.Medias} />
           </div>
         </div>

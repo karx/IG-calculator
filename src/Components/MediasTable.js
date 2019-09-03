@@ -3,33 +3,34 @@ import React from "react";
 function MediasTable(props) {
   return (
     <div className="card">
+      <div class="card-body p-0">
+<div class="table-responsive">
+    <table class="table table-padded recent-order-list-table table-responsive-fix-big">
+        <thead>
+            <tr>
+                <th>Post Image</th>
+                <th>Date</th>
+                <th>Caption</th>
+                <th>Link</th>
+                <th>Likes</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
       {props.data.edges.slice(0, 12).map((post, i) => (
-        <div
-          key={i}
-          className="row mb-2 card-1 p-2"
-          style={{
-            // backgroundColor: "rgba(227,227,227,0.7)",
-            backgroundColor: "unset",
-            backdropFilter: "saturate(80%) blur(4px)"
-          }}
-        >
-          <div className="col-4 col-md-1 text-center">
-            <img
-              alt="instagram"
-              className="rounded-circle mx-auto"
-              style={{ height: "64px", width: "64px" }}
-              src={post.node.thumbnail_resources[1].src}
-            />
-          </div>
-          <div className="col-4 col-md-2 align-self-center text-center">
-            <h6>
-              {new Date(
-                Number(post.node.taken_at_timestamp + "000")
-              ).toLocaleDateString()}
-            </h6>
-          </div>
-          <div className="col-4 col-md-2 align-self-center text-center">
-            <span
+            <tr>
+                <td><img
+                      alt="instagram"
+                      className="rounded-circle mx-auto"
+                      style={{ height: "64px", width: "64px" }}
+                      src={post.node.thumbnail_resources[1].src}
+                    />
+                </td>
+                <td class="text-muted">{new Date(
+                    Number(post.node.taken_at_timestamp + "000")
+                    ).toLocaleDateString()}
+                </td>
+                <td><span
               data-toggle="tooltip"
               data-placement="top"
               title={
@@ -44,27 +45,25 @@ function MediasTable(props) {
                     20
                   ) + "..."
                 : "no caption"}
-            </span>
-          </div>
-          <div className="col-4 col-md-2 align-self-center text-center mt-2">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
+            </span></td>
+                <td><a
               href={"https://www.instagram.com/p/" + post.node.shortcode}
-              className="btn btn-outline-info btn-block"
-            >
-              View Post
-            </a>
-          </div>
-          <div className="col-4 col-md-2 align-self-center text-center mt-2">
-            <span>{post.node.edge_media_preview_like.count}</span>
-          </div>
-          <div className="col-4 col-md-2 align-self-center text-center mt-2">
-            <span>{post.node.edge_media_to_comment.count}</span>
-          </div>
-        </div>
-      ))}
-    </div>
+              class="text-primary"
+            >View Post</a>
+            </td>
+                <td><span class="text-pale-sky">{post.node.edge_media_preview_like.count}</span></td>
+                <td><span class="text-pale-sky">{post.node.edge_media_to_comment.count}</span>
+                </td>
+            </tr>
+  ))}
+</tbody>
+    </table>
+</div>
+</div>
+</div>
   );
 }
 export default MediasTable;
+
+
+
