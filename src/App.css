@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC|Dancing+Script|Indie+Flower|Lobster|Pacifico|Righteous|Lato&display=swap");
+@font-face {
+  font-family: "Far.KoodakBold";
+  src: url("https://www.fontfarsi.ir/Content/Fonts/EOT/Far_KoodakBold.eot");
+  src: local("☺"),
+    url("https://www.fontfarsi.ir/Content/Fonts/WOFF/Far_KoodakBold.woff")
+      format("woff"),
+    url("https://www.fontfarsi.ir/Content/Fonts/TTF/Far_KoodakBold.ttf")
+      format("truetype"),
+    url("https://www.fontfarsi.ir/Content/Fonts/SVG/Far_KoodakBold.svg")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+.KoodakBold {
+  font-family: "Far.KoodakBold", Tahoma, Sans-Serif;
+  /* font-size: 24px; */
+}
+.Indie-Flower {
+  font-family: "Indie Flower", cursive;
+}
+.fontb {
+  font-family: "Amatic SC", cursive;
+}
+.fontc {
+  font-family: "Dancing Script", cursive;
+}
+.Pacifico {
+  font-family: "Pacifico", cursive;
+}
+.Lobster {
+  font-family: "Lobster", cursive;
+}
+.Righteous {
+  font-family: "Lato";
+}
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.card-2 {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.card-3 {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.card-4 {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.card-5 {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+igs-card {
+  border: none;
+  background-color: #000 !important;
+}
+/* card-3 border-0 */
