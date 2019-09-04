@@ -1,6 +1,5 @@
 import "./App.css";
 import React from "react";
-import NavBar from "./Cards/NavBar";
 import { FetchData } from "./Instagram.js";
 import ProfileCardv2 from "./Cards/ProfileCardv2";
 import FeaturesTable from "./Components/FeaturesTable";
@@ -108,12 +107,7 @@ export default class App extends React.Component {
     }
 
     return (
-      <div className="container-fluid">
-      <div className="container">
-        <NavBar />
-        <br />
-        <br />
-        <br />
+        <div className="container">
         <div className="row">
           <div className="col">
             <div
@@ -221,14 +215,7 @@ export default class App extends React.Component {
             <MediasTable data={this.state.Result.Medias} />
           </div>
         </div>
-      </div>
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Powered by <a href="http://viragram.me">Viragram</a>. Developed by <a href="https://artiosys.com">Artiosys Ventures</a> 2019</p>
-            </div>
         </div>
-      </div>
-
     );
   }
 }
