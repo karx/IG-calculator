@@ -19,7 +19,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       isLoading: true,
-      username: "golfarahani"
+      username: "artiosys"
     };
 
     // this.handleInputChange = this.handleInputChange.bind(this);
@@ -67,6 +67,7 @@ export default class App extends React.Component {
     }
 
     return (
+      <div className="container-fluid">
       <div className="container">
         <NavBar />
         <br />
@@ -177,6 +178,12 @@ export default class App extends React.Component {
             <h4>Last 12 Post</h4>
             <MediasTable data={this.state.Result.Medias} />
           </div>
+        </div>
+      </div>
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Powered by <a href="http://viragram.me">Viragram</a>. Developed by <a href="https://artiosys.com">Artiosys Ventures</a> 2019</p>
+            </div>
         </div>
       </div>
     );

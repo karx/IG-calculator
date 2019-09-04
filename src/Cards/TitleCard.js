@@ -5,8 +5,8 @@ export default () => (
     <div className="card-body">
       <div className="row">
         <div className="col-7 col-md-8 align-self-center text-center">
-          <h3 className="Lobster">IGSAnalyzer</h3>
-          <p>free instagram analyzer</p>
+          <h3 className="Lobster">Viragram</h3>
+          <p>Insta-Insight</p>
         </div>
         <div className="col-5 col-md-4">
           <img

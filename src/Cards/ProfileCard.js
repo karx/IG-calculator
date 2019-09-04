@@ -17,8 +17,8 @@ function ProfileCard(props) {
           <br />
           <h1 className="text-center fontc">{props.fullname}</h1>
           <blockquote class="blockquote text-center fontc">
-            <p class="mb-0">{props.bio}</p>
-            <footer class="blockquote-footer">
+            <p className="mb-0">{props.bio}</p>
+            <footer className="blockquote-footer">
               {props.fullname} in <cite title="Source Title">instagram</cite>
             </footer>
           </blockquote>

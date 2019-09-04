@@ -4,14 +4,14 @@ import React from "react";
 function FeatureCard(props) {
   return (
     <div className="col-md-6 col-sm-12">
-      <div class="card">
-          <div class="card-body">
-              <div class="stat-widget-two">
-                  <div class="media">
-                      <div class="media-body">
-                          <h2 class="mt-0 mb-1 text-danger">{props.value}</h2><span class="">{props.title}</span>
+      <div className="card">
+          <div className="card-body">
+              <div className="stat-widget-two">
+                  <div className="media">
+                      <div className="media-body">
+                          <h2 className="mt-0 mb-1 text-danger">{props.value}</h2><span>{props.title}</span>
                       </div>
-                      <img class="ml-3" src={props.icon} alt="" />
+                      <img className="ml-3" src={props.icon} alt="" />
                   </div>
               </div>
           </div>
