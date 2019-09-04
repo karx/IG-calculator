@@ -1,7 +1,7 @@
 import React from "react";
 import App from './App';
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect  } from "react-router-dom";
 
 export default class InstagramApp extends React.Component {
     constructor(props) {
@@ -13,6 +13,7 @@ export default class InstagramApp extends React.Component {
         return (
         <Router>
             {/* <DefualtRoute component={App} /> */}
+            <Redirect from="/" to="/instagram" />
             {/* <Route path="/" component={App} /> */}
             <Route path="/:username" component={App} />
         </Router>
