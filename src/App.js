@@ -13,37 +13,78 @@ import MediasTable from "./Components/MediasTable";
 import MentionsTable from "./Components/MentionsTable";
 import HashtagsTable from "./Components/HashtagsTable";
 import TopPostEmbed from "./Components/TopPostEmbed";
+// const queryString = require('query-string');
+
 
 export default class App extends React.Component {
+  
+
   constructor(props) {
     super(props);
+    console.log("Pops" + props);
+    console.log(props);
     this.state = {
       isLoading: true,
-      username: "artiosys"
+      username: props.match ? props.match.params.username : 'instagram'
     };
 
-    // this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.usernametextInput = React.createRef();
   }
 
   handleInputChange(event) {
+    console.log(event);
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    this.setState({
-      [name]: value
+    // this.setState({
+    //   [name]: value
+    // });
+  }
+
+
+  updateWithUsername(username) {
+    this.setState({isLoading: true});
+    this.setState({username: username})
+    FetchData(String(username)).then(x => {
+      console.log(x);
+      this.setState({ isLoading: false,Result: x });
     });
   }
 
   handleClick(event) {
-    FetchData(String(this.usernametextInput.current.value)).then(x => {
-      this.setState({ Result: x });
-    });
+    try {
+      this.props.history.push('/'+ this.usernametextInput.current.value);
+      this.updateWithUsername(this.usernametextInput.current.value);
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
+  queryParametersIfName() {
+    // console.log(window.location.search);
+    // console.log(window.location.search);
+    // //=> '?foo=bar'
+    // var parsed;
+    // try {
+    //   // parsed = queryString.parse(window.location.search);
+    //   // console.log(parsed.username);
+    //   this.setState({username: parsed.username});
+    //   return parsed.username;  
+    // } catch (error) {
+    //   console.error(error);
+    // }
+    return null;
+    
   }
 
   componentDidMount() {
-    return FetchData("instagram").then(x => {
+    var toFetchUsername = this.state.username;
+    toFetchUsername = toFetchUsername ? toFetchUsername : "instagram";
+    console.log(toFetchUsername);
+    return FetchData(toFetchUsername).then(x => {
+      console.log(x);
       this.setState({ isLoading: false, Result: x }, function() {});
       // console.log("WOW")
     });
@@ -96,11 +137,11 @@ export default class App extends React.Component {
                     </span>
                   </div>
                   <input
-                    // name="username"
+                    name="username"
                     type="text"
-                    // value={this.state.username}
+                    placeholder={this.state.username?this.state.username:"username"}
                     className="form-control"
-                    placeholder="Username"
+                    
                     // onChange={this.handleInputChange}
                     style={{
                       backgroundColor: "transparent",
@@ -111,6 +152,7 @@ export default class App extends React.Component {
                       borderBottom: "#000 solid 1px"
                     }}
                     ref={this.usernametextInput}
+                    
                   />
                   <div className="input-group-append">
                     <button
@@ -186,6 +228,8 @@ export default class App extends React.Component {
             </div>
         </div>
       </div>
+
     );
   }
 }
+

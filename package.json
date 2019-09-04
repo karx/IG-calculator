@@ -5,10 +5,12 @@
   "dependencies": {
     "@nivo/calendar": "^0.59.1",
     "chart.js": "^2.8.0",
+    "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-chartjs-2": "^2.7.6",
     "react-dom": "^16.9.0",
     "react-instagram-embed": "^1.5.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.0",
     "react-wordcloud": "^1.0.8"
   },
