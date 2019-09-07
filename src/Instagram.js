@@ -1,3 +1,5 @@
+import firebase from './Firebase';
+const firestore = firebase.firestore();
 var mm = {
   data: {
     user: {
@@ -3790,6 +3792,17 @@ var pp = {
   }
 };
 
+function pushDataToFirebase(data) {
+  if (data.Account.id) {
+
+  }
+  var instagramIdRef = firestore.collection(`ig_users`).doc(`${data.Account.id}`);
+  var isSet = instagramIdRef.set(
+    data.Account
+  );
+  console.log(isSet);
+}
+
 export function FetchData(username) {
   // return new Promise((resolve, reject) => {
   //   resolve({
@@ -3817,7 +3830,8 @@ export function FetchData(username) {
             Result.Account = accountJson.graphql.user;
             Result.Medias =
               account_mediaJson.data.user.edge_owner_to_timeline_media;
-
+            console.log(Result);
+            pushDataToFirebase(Result);
             return resolve(Result);
           })
           .catch(error => {

@@ -5,6 +5,7 @@
   "dependencies": {
     "@nivo/calendar": "^0.59.1",
     "chart.js": "^2.8.0",
+    "firebase": "^6.6.0",
     "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-chartjs-2": "^2.7.6",
