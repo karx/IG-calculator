@@ -4,7 +4,7 @@ import { Doughnut } from "react-chartjs-2";
 //Set Chart Option & Data structure
 var Chart = {
   data: {
-    labels: ["Video", "Picture", "Carousel"],
+    labels: ["Picture", "Video", "Carousel"],
     datasets: [
       {
         data: null,
