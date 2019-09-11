@@ -3812,6 +3812,13 @@ export function FetchData(username) {
   // });
   return new Promise((resolve, reject) => {
     fetch("https://www.instagram.com/" + username + "/?__a=1")
+      .then((data) => {
+        console.log("Data: ", data);
+        // console.log("DataJson: ", data.json());
+        // if (!data || !data.Medias || data.Medias.length < 1)
+        //   return null;
+        return data;
+      })
       .then(account => account.json())
       .then(accountJson => {
         fetch(

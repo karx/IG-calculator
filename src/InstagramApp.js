@@ -95,10 +95,10 @@ export default class InstagramApp extends React.Component {
       // if (false) {
       return (
         <div className="h-100 container-fluid text-center align-content-center">
-          <br />
-          <h1 className="text-left">Loading</h1>
+          {/* <br /> */}
+          {/* <h1 className="text-left">Loading</h1> */}
           <img
-            className="img-fluid mx-auto align-self-center"
+            className="img-fluid mx-auto align-self-center loading-image"
             alt="loading"
             src="./loading.png"
           />
@@ -190,7 +190,7 @@ export default class InstagramApp extends React.Component {
             <EngagementsCalander data={this.state.Result} />
           </div>
           <div className="col-md-6 mb-4">
-            <h4 className="Righteous">Media Types</h4>
+            <h4 className="Righteous">Media Types (Last 50 posts )</h4>
             <MediasTypesPC data={this.state.Result} />
           </div>
           <div className="col-md-6 mb-4 align-self-center">

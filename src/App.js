@@ -26,7 +26,7 @@ export default class App extends React.Component {
             </div>
             <div class="footer">
                 <div class="copyright">
-                    <p>Copyright &copy; Powered by <a href="http://viragram.me">Viragram</a>. Developed by <a href="https://artiosys.com">Artiosys Ventures</a> 2019</p>
+                    <p>Copyright &copy; Powered by <a href="http://viragram.me">Viragram Media</a></p>
                 </div>
             </div>
         </div>
