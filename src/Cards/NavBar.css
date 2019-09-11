@@ -3,3 +3,6 @@
   backdrop-filter: saturate(80%) blur(8px);
   /* -webkit-backdrop-filter: saturate(180%) blur(10px); */
 }
+.brand-logo {
+  height: 50px;
+}
