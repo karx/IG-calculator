@@ -2,10 +2,12 @@ import React from "react";
 import NavBar from "./Cards/NavBar";
 import FootBar from "./Cards/FootBar";
 import InstagramApp from './views/InstagramApp/InstagramApp';
-import ErrorNotFound from './views/ErrorNotFound';
+import { hotjar } from 'react-hotjar';
 
 import { BrowserRouter as Router, Route, Link, Redirect, Switch  } from "react-router-dom";
 
+
+hotjar.initialize(1477844, 6);
 
 export default class App extends React.Component {
     constructor(props) {
@@ -24,7 +26,6 @@ export default class App extends React.Component {
                     {/* <DefualtRoute component={App} /> */}
                         <Redirect from="/" to="/instagram" />
                         <Route path="/:username" component={InstagramApp} />
-                        {/* <Route path="*" component={ErrorNotFound} /> */}
                 </Router>
             <FootBar />       
         </div>
