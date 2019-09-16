@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { hotjar } from 'react-hotjar';
+
+
+hotjar.initialize(1477844, 6);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
