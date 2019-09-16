@@ -60,7 +60,7 @@ function MentionsTable(props) {
   return (
     <div className="card" >
       <div className="card-body">
-      <div class="table-responsive">        
+      <div className="table-responsive">        
         <table className="table">
           <thead>
             <tr>
