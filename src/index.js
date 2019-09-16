@@ -4,7 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { hotjar } from 'react-hotjar';
+import ReactGA from 'react-ga';
 
+
+ReactGA.initialize('UA-148097649-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 hotjar.initialize(1477844, 6);
 
