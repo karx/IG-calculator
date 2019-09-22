@@ -1,17 +1,17 @@
-import "./InstagramApp.css";
+// import "./InstagramApp.css";
 import React from "react";
-import { FetchData } from "./Instagram.js";
-import ProfileCardv2 from "./Cards/ProfileCardv2";
-import FeaturesTable from "./Components/FeaturesTable";
-import LikeCommentBC from "./Components/LikeCommentBC";
-import MediasTypesPC from "./Components/MediasTypesPC";
-import EngagementsCalander from "./Components/EngagementsCalander";
-import LikeCommentEngagementBLC from "./Components/LikeCommentEngagementBLC";
-import CloudWords from "./Components/CloudWords";
-import MediasTable from "./Components/MediasTable";
-import MentionsTable from "./Components/MentionsTable";
-import HashtagsTable from "./Components/HashtagsTable";
-import TopPostEmbed from "./Components/TopPostEmbed";
+import { FetchData } from "../../Instagram.js";
+import ProfileCardv2 from "../../Cards/ProfileCardv2";
+import FeaturesTable from "../../Components/FeaturesTable";
+import LikeCommentBC from "../../Components/LikeCommentBC";
+import MediasTypesPC from "../../Components/MediasTypesPC";
+import EngagementsCalander from "../../Components/EngagementsCalander";
+import LikeCommentEngagementBLC from "../../Components/LikeCommentEngagementBLC";
+import CloudWords from "../../Components/CloudWords";
+import MediasTable from "../../Components/MediasTable";
+import MentionsTable from "../../Components/MentionsTable";
+import HashtagsTable from "../../Components/HashtagsTable";
+import TopPostEmbed from "../../Components/TopPostEmbed";
 // const queryString = require('query-string');
 
 
@@ -47,8 +47,12 @@ export default class InstagramApp extends React.Component {
     this.setState({isLoading: true});
     this.setState({username: username})
     FetchData(String(username)).then(x => {
-      console.log(x);
-      this.setState({ isLoading: false,Result: x });
+      console.log(x.Account.is_private);
+      if (x.Account.is_private === false){
+        this.setState({ isLoading: false, Result: x }, function() {});
+      } else{
+        this.setState({ isLoading: true }, function() {});        
+      }
     });
   }
 
@@ -83,8 +87,13 @@ export default class InstagramApp extends React.Component {
     toFetchUsername = toFetchUsername ? toFetchUsername : "instagram";
     console.log(toFetchUsername);
     return FetchData(toFetchUsername).then(x => {
-      console.log(x);
-      this.setState({ isLoading: false, Result: x }, function() {});
+      console.log("Did Mount");
+      console.log(x.Account.is_private);
+      if (x.Account.is_private === false){
+        this.setState({ isLoading: false, Result: x }, function() {});
+      } else{
+        this.setState({ isLoading: true }, function() {});        
+      }
       // console.log("WOW")
     });
   }

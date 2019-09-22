@@ -4,7 +4,7 @@
     
     
     new quixSettings({
-        version: "dark", //2 options "light" and "dark"
+        version: "light", //2 options "light" and "dark"
         layout: "vertical", //2 options, "vertical" and "horizontal"
         navheaderBg: "color_1", //have 10 options, "color_1" to "color_10"
         headerBg: "color_1", //have 10 options, "color_1" to "color_10"
