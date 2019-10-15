@@ -44,7 +44,7 @@ function HashtagsTable(props) {
       className="card"
     >
       <div className="card-body">
-        <table class="table">
+        <table className="table">
           <thead className="Righteous">
             <tr>
               <th scope="col">Tag</th>
