@@ -155,7 +155,11 @@ export default class InstagramApp extends React.Component {
                       borderBottom: "#000 solid 1px"
                     }}
                     ref={this.usernametextInput}
-                    
+                     onKeyPress={event => {
+                      if (event.key === "Enter") {
+                        this.handleClick();
+                      }
+                    }}
                   />
                   <div className="input-group-append">
                     <button
