@@ -1,0 +1,14 @@
+.footer {
+     display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+       
+}
+ .footer .logo-div {
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+            justify-content: center;
+            padding-bottom: 10px;
+        }
