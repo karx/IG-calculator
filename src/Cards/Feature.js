@@ -6,7 +6,10 @@ class FeatureCard extends React.Component {
     super(props);
     this.state = {
       isClickedAnimation: false,
-      props: props
+      props: {
+        ...props,
+        current_value: props.value
+      }
     }
     this.props = props;
     this.handleClick = this.handleClick.bind(this);
@@ -40,7 +43,8 @@ class FeatureCard extends React.Component {
       
       this.setState(state => ({
         props: {
-          value:  (Math.round(current*100)/100).toLocaleString(),
+          current_value:  (Math.round(current*100)/100).toLocaleString(),
+          value: this.state.props.value,
           icon: this.state.props.icon,
           title: this.state.props.title
         }
@@ -51,7 +55,8 @@ class FeatureCard extends React.Component {
       else {
         this.setState(state => ({
           props: {
-            value:  end.toLocaleString(),
+            current_value:  end.toLocaleString(),
+            value: this.state.props.value,
             icon: this.state.props.icon,
             title: this.state.props.title
           }
@@ -79,7 +84,9 @@ class FeatureCard extends React.Component {
   }
 
   render() {
-    var props = this.state.props;
+    var props = new Object(this.state.props);
+    
+
     return (
       <div className="col-md-6 col-sm-12" onClick={this.handleClick}>
         <div className="card">
@@ -87,7 +94,7 @@ class FeatureCard extends React.Component {
                 <div className="stat-widget-two">
                     <div className="media">
                         <div className="media-body">
-                            <h2 className="mt-0 mb-1 text-danger" className={this.state.isClickedAnimation ? 'tracking-in-contract' : ''}>{props.value}</h2><span>{props.title}</span>
+                            <h2 className="mt-0 mb-1 text-danger" className={this.state.isClickedAnimation ? 'tracking-in-contract' : ''}>{props.current_value}</h2><span>{props.title}</span>
                         </div>
                         <img className="ml-3" src={props.icon} alt="" />
                     </div>
