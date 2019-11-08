@@ -3819,31 +3819,58 @@ export function FetchData(username) {
         //   return null;
         return data;
       })
-      .then(account => account.json())
+      .then(account => {
+        console.log('the Response: ', account);
+        if (account.status === 200) {
+          return account.json();
+        } else {
+          if (account.status === 404) {
+            console.log('404');
+            return {
+              "isErrored": true,
+              "error": "Account not found"
+            };
+          } else {
+            console.log('Random Error ', account.status);
+            return {
+              "isErrored": true,
+              "error": account.status
+            }
+          }
+        }
+        
+      })
       .then(accountJson => {
-        fetch(
-          "https://www.instagram.com/graphql/query/?query_id=17888483320059182" +
-            "&id=" +
-            accountJson.graphql.user.id +
-            "&first=" +
-            50
-        )
-          .then(account_media => account_media.json())
-          .then(account_mediaJson => {
-            //Get Medias
-            var Result = {};
-
-            //Prepare data to return
-            Result.Account = accountJson.graphql.user;
-            Result.Medias =
-              account_mediaJson.data.user.edge_owner_to_timeline_media;
-            console.log(Result);
-            pushDataToFirebase(Result);
-            return resolve(Result);
-          })
-          .catch(error => {
-            console.error(error);
-          });
+        if(accountJson.isErrored) {
+          console.log('returning none as errored');
+          return resolve(accountJson);
+        } else {
+          console.log('Fetching');
+          fetch(
+            "https://www.instagram.com/graphql/query/?query_id=17888483320059182" +
+              "&id=" +
+              accountJson.graphql.user.id +
+              "&first=" +
+              50
+          )
+            .then(account_media => account_media.json())
+            .then(account_mediaJson => {
+              //Get Medias
+              var Result = {};
+  
+              //Prepare data to return
+              Result.Account = accountJson.graphql.user;
+              Result.Medias =
+                account_mediaJson.data.user.edge_owner_to_timeline_media;
+              console.log(Result);
+              pushDataToFirebase(Result);
+              return resolve(Result);
+            })
+            .catch(error => {
+              console.error(error);
+            });
+        }
+        
       })
       .catch(error => {
         console.error(error);

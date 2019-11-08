@@ -14,17 +14,14 @@ import HashtagsTable from "../../Components/HashtagsTable";
 import TopPostEmbed from "../../Components/TopPostEmbed";
 // const queryString = require('query-string');
 
-
 export default class InstagramApp extends React.Component {
-  
-
   constructor(props) {
     super(props);
     console.log("Pops" + props);
     console.log(props);
     this.state = {
       isLoading: true,
-      username: props.match ? props.match.params.username : 'instagram'
+      username: props.match ? props.match.params.username : "instagram"
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -42,25 +39,50 @@ export default class InstagramApp extends React.Component {
     // });
   }
 
-
   updateWithUsername(username) {
-    this.setState({isLoading: true});
-    this.setState({username: username})
+    this.setState({ isLoading: true });
+    this.setState({ username: username });
     FetchData(String(username)).then(x => {
-      console.log(x.Account.is_private);
-      if (x.Account.is_private === false){
-        this.setState({ isLoading: false, Result: x }, function() {});
-      } else{
-        this.setState({ isLoading: true }, function() {});        
+      
+      if (x.Account && x.Account.is_private === false) {
+        this.setState(
+          {
+            isLoading: false,
+            isReady: true,
+            Result: x,
+            isPrivate: false,
+            notFound: false
+          },
+          function() {}
+        );
+      } else if (x.Account && x.Account.is_private === true) {
+        this.setState(
+          {
+            isLoading: false,
+            isReady: false,
+            isPrivate: true,
+            notFound: false
+          },
+          function() {}
+        );
+      } else {
+        this.setState(
+          {
+            isLoading: false,
+            isPrivate: false,
+            notFound: true,
+            isReady: false
+          }
+        )
       }
     });
   }
 
   handleClick(event) {
     try {
-      this.props.history.push('/'+ this.usernametextInput.current.value);
+      this.props.history.push("/" + this.usernametextInput.current.value);
       this.updateWithUsername(this.usernametextInput.current.value);
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
   }
@@ -74,28 +96,18 @@ export default class InstagramApp extends React.Component {
     //   // parsed = queryString.parse(window.location.search);
     //   // console.log(parsed.username);
     //   this.setState({username: parsed.username});
-    //   return parsed.username;  
+    //   return parsed.username;
     // } catch (error) {
     //   console.error(error);
     // }
     return null;
-    
   }
 
   componentDidMount() {
     var toFetchUsername = this.state.username;
     toFetchUsername = toFetchUsername ? toFetchUsername : "instagram";
     console.log(toFetchUsername);
-    return FetchData(toFetchUsername).then(x => {
-      console.log("Did Mount");
-      console.log(x.Account.is_private);
-      if (x.Account.is_private === false){
-        this.setState({ isLoading: false, Result: x }, function() {});
-      } else{
-        this.setState({ isLoading: true }, function() {});        
-      }
-      // console.log("WOW")
-    });
+    this.updateWithUsername(toFetchUsername);
   }
 
   render() {
@@ -114,122 +126,150 @@ export default class InstagramApp extends React.Component {
         </div>
       );
     }
-
-    return (
+    if (this.state.isReady) {
+      return (
         <div className="container">
-        <div className="row">
-          <div className="col">
-            <div
+          <div className="row">
+            <div className="col">
+              <div
               // className="card igs-card card-2 border-0"
               // style={{
               //   backgroundColor: "unset",
               //   backdropFilter: "saturate(80%) blur(4px)"
               // }}
-            >
-              <div className="card-body">
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span
-                      className="input-group-text border-0"
-                      style={{
-                        backgroundColor: "unset",
-                        color: "#000"
-                      }}
-                    >
-                      @
-                    </span>
-                  </div>
-                  <input
-                    name="username"
-                    type="text"
-                    placeholder={this.state.username?this.state.username:"username"}
-                    className="form-control"
-                    
-                    // onChange={this.handleInputChange}
-                    style={{
-                      backgroundColor: "transparent",
-                      borderColor: "#000",
-                      color: "#000",
-                      border: "none",
-                      borderRadius: "0",
-                      borderBottom: "#000 solid 1px"
-                    }}
-                    ref={this.usernametextInput}
-                     onKeyPress={event => {
-                      if (event.key === "Enter") {
-                        this.handleClick();
+              >
+                <div className="card-body">
+                  <div className="input-group">
+                    <div className="input-group-prepend">
+                      <span
+                        className="input-group-text border-0"
+                        style={{
+                          backgroundColor: "unset",
+                          color: "#000"
+                        }}
+                      >
+                        @
+                      </span>
+                    </div>
+                    <input
+                      name="username"
+                      type="text"
+                      placeholder={
+                        this.state.username ? this.state.username : "username"
                       }
-                    }}
-                  />
-                  <div className="input-group-append">
-                    <button
-                      onClick={this.handleClick}
-                      className="btn btn-outline-dark"
-                      type="button"
-                    >
-                      Fetch
-                    </button>
+                      className="form-control"
+                      // onChange={this.handleInputChange}
+                      style={{
+                        backgroundColor: "transparent",
+                        borderColor: "#000",
+                        color: "#000",
+                        border: "none",
+                        borderRadius: "0",
+                        borderBottom: "#000 solid 1px"
+                      }}
+                      ref={this.usernametextInput}
+                      onKeyPress={event => {
+                        if (event.key === "Enter") {
+                          this.handleClick();
+                        }
+                      }}
+                    />
+                    <div className="input-group-append">
+                      <button
+                        onClick={this.handleClick}
+                        className="btn btn-outline-dark"
+                        type="button"
+                      >
+                        Fetch
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <br />
+          <div className="row">
+            <div className="col-xl-4 col-xxl-5 col-lg-4">
+              <ProfileCardv2
+                bio={this.state.Result.Account.biography}
+                fullname={this.state.Result.Account.full_name}
+                picture={this.state.Result.Account.profile_pic_url_hd}
+              />
+            </div>
+            <div className="col-xl-8 col-xxl-7 col-lg-8">
+              <FeaturesTable data={this.state.Result} />
+            </div>
+          </div>
+          <br />
+          <div className="row ">
+            <div className="col-md-6 mb-4">
+              <h4>Like & Comment through time</h4>
+              <LikeCommentBC data={this.state.Result} />
+            </div>
+            <div className="col-md-6 mb-4">
+              <h4>Like,Comment, Engagement through time</h4>
+              <LikeCommentEngagementBLC data={this.state.Result} />
+            </div>
+            <div className="col-md-12 mb-4">
+              <h4 className="Righteous">Engagement Calander</h4>
+              <EngagementsCalander data={this.state.Result} />
+            </div>
+            <div className="col-md-6 mb-4">
+              <h4 className="Righteous">Media Types (Last 50 posts )</h4>
+              <MediasTypesPC data={this.state.Result} />
+            </div>
+            <div className="col-md-6 mb-4 align-self-center">
+              <h4 className="Righteous">Top Words</h4>
+              <CloudWords data={this.state.Result} />
+            </div>
+            <div className="col-md-6 mb-4 align-self-center">
+              <h4 className="Righteous">Top 5 Mentions</h4>
+              <MentionsTable data={this.state.Result.Medias} />
+            </div>
+            <div className="col-md-6 mb-4 align-self-center">
+              <h4 className="Righteous">Top 5 Hashtags</h4>
+              <HashtagsTable data={this.state.Result.Medias} />
+            </div>
+            <div className="col-md-12 mb-4 align-self-center">
+              <h4 className="Righteous">Top Post</h4>
+              <TopPostEmbed data={this.state.Result} />
+            </div>
+            <div className="col-md-8 mb-4 align-self-center" />
+            <div className="col-md-12">
+              <h4>Last 12 Post</h4>
+              <MediasTable data={this.state.Result.Medias} />
+            </div>
+          </div>
         </div>
-        <br />
-        <div className="row">
-          <div className="col-xl-4 col-xxl-5 col-lg-4">
-            <ProfileCardv2
-              bio={this.state.Result.Account.biography}
-              fullname={this.state.Result.Account.full_name}
-              picture={this.state.Result.Account.profile_pic_url_hd}
-            />
-          </div>
-          <div className="col-xl-8 col-xxl-7 col-lg-8">
-            <FeaturesTable data={this.state.Result} />
-          </div>
+      );
+    }
+
+    if (this.state.isPrivate) {
+      return (
+        <div className="h-100 container-fluid text-center align-content-center">
+          {/* <br /> */}
+          {/* <h1 className="text-left">Loading</h1> */}
+          <img
+            className="img-fluid mx-auto align-self-center"
+            alt="private-account"
+            src="./private.png"
+          />
         </div>
-        <br />
-        <div className="row ">
-          <div className="col-md-6 mb-4">
-            <h4>Like & Comment through time</h4>
-            <LikeCommentBC data={this.state.Result} />
-          </div>
-          <div className="col-md-6 mb-4">
-            <h4>Like,Comment, Engagement through time</h4>
-            <LikeCommentEngagementBLC data={this.state.Result} />
-          </div>
-          <div className="col-md-12 mb-4">
-            <h4 className="Righteous">Engagement Calander</h4>
-            <EngagementsCalander data={this.state.Result} />
-          </div>
-          <div className="col-md-6 mb-4">
-            <h4 className="Righteous">Media Types (Last 50 posts )</h4>
-            <MediasTypesPC data={this.state.Result} />
-          </div>
-          <div className="col-md-6 mb-4 align-self-center">
-            <h4 className="Righteous">Top Words</h4>
-            <CloudWords data={this.state.Result} />
-          </div>
-          <div className="col-md-6 mb-4 align-self-center">
-            <h4 className="Righteous">Top 5 Mentions</h4>
-            <MentionsTable data={this.state.Result.Medias} />
-          </div>
-          <div className="col-md-6 mb-4 align-self-center">
-            <h4 className="Righteous">Top 5 Hashtags</h4>
-            <HashtagsTable data={this.state.Result.Medias} />
-          </div>
-          <div className="col-md-12 mb-4 align-self-center">
-            <h4 className="Righteous">Top Post</h4>
-            <TopPostEmbed data={this.state.Result} />
-          </div>
-          <div className="col-md-8 mb-4 align-self-center" />
-          <div className="col-md-12">
-            <h4>Last 12 Post</h4>
-            <MediasTable data={this.state.Result.Medias} />
-          </div>
+      )
+    }
+    if (this.state.notFound) {
+      return (
+        <div className="h-100 container-fluid text-center align-content-center">
+          {/* <br /> */}
+          <h1 className="text-left">Profile Not found</h1>
+          <img
+            className="img-fluid mx-auto align-self-center"
+            alt="no-account"
+            src="./no-account.png"
+          />
         </div>
-        </div>
-    );
+      )
+    }
   }
 }
-

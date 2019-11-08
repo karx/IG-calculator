@@ -17,7 +17,9 @@ function EngagementsCalander(props) {
         100
     };
   });
-
+  if(!Dates) {
+    return null;
+  }
   return (
     <div className="card">
       <div className="card-body" style={{ height: "296px" }}>
