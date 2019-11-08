@@ -17,39 +17,42 @@ function EngagementsCalander(props) {
         100
     };
   });
-  if(!Dates) {
+  console.log(Dates);
+  if (!!Dates && Dates.length > 0) {
+    return (
+      <div className="card">
+        <div className="card-body" style={{ height: "296px" }}>
+          <ResponsiveCalendarCanvas
+            data={Dates}
+            to={Dates[0].day}
+            from={Dates[Dates.length - 1].day}
+            // from="2019-01-01"
+            emptyColor="#eeeeee"
+            colors={["#61cdbb", "#97e3d5", "#e8c1a0", "#f47560"]}
+            margin={{ top: 20, right: 40, bottom: 20, left: 40 }}
+            yearSpacing={40}
+            monthBorderColor="#ffffff"
+            dayBorderWidth={2}
+            dayBorderColor="#ffffff"
+            legends={[
+              {
+                anchor: "bottom-right",
+                direction: "row",
+                translateY: 32,
+                itemCount: 4,
+                itemWidth: 42,
+                itemHeight: 36,
+                itemsSpacing: 14,
+                itemDirection: "right-to-left"
+              }
+            ]}
+          />
+        </div>
+      </div>
+    );
+  } else {
     return null;
   }
-  return (
-    <div className="card">
-      <div className="card-body" style={{ height: "296px" }}>
-        <ResponsiveCalendarCanvas
-          data={Dates}
-          to={Dates[0].day}
-          from={Dates[Dates.length - 1].day}
-          // from="2019-01-01"
-          emptyColor="#eeeeee"
-          colors={["#61cdbb", "#97e3d5", "#e8c1a0", "#f47560"]}
-          margin={{ top: 20, right: 40, bottom: 20, left: 40 }}
-          yearSpacing={40}
-          monthBorderColor="#ffffff"
-          dayBorderWidth={2}
-          dayBorderColor="#ffffff"
-          legends={[
-            {
-              anchor: "bottom-right",
-              direction: "row",
-              translateY: 32,
-              itemCount: 4,
-              itemWidth: 42,
-              itemHeight: 36,
-              itemsSpacing: 14,
-              itemDirection: "right-to-left"
-            }
-          ]}
-        />
-      </div>
-    </div>
-  );
+ 
 }
 export default EngagementsCalander;

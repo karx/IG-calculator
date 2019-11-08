@@ -14,39 +14,43 @@ function TopPostEmbed(props) {
     };
   });
   Engagements.sort((a, b) => (a.engagement < b.engagement ? 1 : -1));
-
-  return (  
-    <React.Fragment>
-      <div className="row">
-      <div className="col-md-4 col-sm-12">
-        <InstagramEmbed
-        className=""
-        url={"https://www.instagram.com/p/" + Engagements[0].shortcode}
-        // maxWidth={320}
-        hideCaption={false}
-        containerTagName="div"
-        injectScript />
-      </div>
-      <div className="col-md-4 col-sm-12">
-        <InstagramEmbed
-        className=""
-        url={"https://www.instagram.com/p/" + Engagements[1].shortcode}
-        // maxWidth={320}
-        hideCaption={false}
-        containerTagName="div"
-        injectScript />
-      </div>
-      <div className="col-md-4 col-sm-12">
-        <InstagramEmbed
-        className=""
-        url={"https://www.instagram.com/p/" + Engagements[2].shortcode}
-        // maxWidth={320}
-        hideCaption={false}
-        containerTagName="div"
-        injectScript />
-      </div>
-      </div>
-    </React.Fragment>
-  );
+  if (!!Engagements && Engagements.length > 0) {
+    return (  
+      <React.Fragment>
+        <div className="row">
+        <div className="col-md-4 col-sm-12">
+          <InstagramEmbed
+          className=""
+          url={"https://www.instagram.com/p/" + Engagements[0].shortcode}
+          // maxWidth={320}
+          hideCaption={false}
+          containerTagName="div"
+          injectScript />
+        </div>
+        <div className="col-md-4 col-sm-12">
+          <InstagramEmbed
+          className=""
+          url={"https://www.instagram.com/p/" + Engagements[1].shortcode}
+          // maxWidth={320}
+          hideCaption={false}
+          containerTagName="div"
+          injectScript />
+        </div>
+        <div className="col-md-4 col-sm-12">
+          <InstagramEmbed
+          className=""
+          url={"https://www.instagram.com/p/" + Engagements[2].shortcode}
+          // maxWidth={320}
+          hideCaption={false}
+          containerTagName="div"
+          injectScript />
+        </div>
+        </div>
+      </React.Fragment>
+    );
+  } else {
+    return null;
+  }
+  
 }
 export default TopPostEmbed;

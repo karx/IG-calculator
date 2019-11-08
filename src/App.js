@@ -16,11 +16,9 @@ export default class App extends React.Component {
     render() {
         return (
         <div className="container-fluid">
-            <div>
+            <div className="container-first">
                 <NavBar />
-                <br />
-                <br />
-                <br />
+              
                 <Router>
                     {/* <DefualtRoute component={App} /> */}
                         <Redirect from="/" to="/instagram" />

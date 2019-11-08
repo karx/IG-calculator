@@ -249,7 +249,7 @@ export default class InstagramApp extends React.Component {
       return (
         <div className="h-100 container-fluid text-center align-content-center">
           {/* <br /> */}
-          {/* <h1 className="text-left">Loading</h1> */}
+          <h1 className="text-center">This profile is private.</h1>
           <img
             className="img-fluid mx-auto align-self-center"
             alt="private-account"
@@ -262,7 +262,7 @@ export default class InstagramApp extends React.Component {
       return (
         <div className="h-100 container-fluid text-center align-content-center">
           {/* <br /> */}
-          <h1 className="text-left">Profile Not found</h1>
+          <h1 className="text-center">Profile Not found</h1>
           <img
             className="img-fluid mx-auto align-self-center"
             alt="no-account"
