@@ -12,6 +12,7 @@ import MediasTable from "./Components/MediasTable";
 import MentionsTable from "./Components/MentionsTable";
 import HashtagsTable from "./Components/HashtagsTable";
 import TopPostEmbed from "./Components/TopPostEmbed";
+import PrintButton from "./Components/PrintButton";
 // const queryString = require('query-string');
 
 
@@ -176,8 +177,8 @@ export default class InstagramApp extends React.Component {
           </div>
         </div>
         <br />
-        <div className="row ">
-          <div className="col-md-6 mb-4">
+        <div className="row " id={"instagramPrint"}>
+          <div className="col-md-6 mb-4" >
             <h4>Like & Comment through time</h4>
             <LikeCommentBC data={this.state.Result} />
           </div>
@@ -214,7 +215,9 @@ export default class InstagramApp extends React.Component {
             <h4>Last 12 Post</h4>
             <MediasTable data={this.state.Result.Medias} />
           </div>
+          
         </div>
+        <PrintButton id={"instagramPrint"} label={"Export to PDF "} />
         </div>
     );
   }
