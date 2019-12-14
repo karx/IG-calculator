@@ -31,7 +31,7 @@ export default class App extends React.Component {
                     <p>It's in house and on the house. Copyright &copy;<a href="http://viragram.me">Viragram Media</a></p>
                 </div>
                 <div className="logo-div center">
-                <a href="https://viragram.me" class="center-a"> <img className="navbar-brand text-center brand-logo" src="small.png" alt=""/> </a>
+                <a href="https://viragram.me" class="center-a"> <img className="navbar-brand text-center brand-logo" src="viragram-logo-new.png" alt=""/> </a>
 
                 </div>
 
