@@ -21,7 +21,7 @@ export default class App extends React.Component {
               
                 <Router>
                     {/* <DefualtRoute component={App} /> */}
-                        <Redirect from="/" to="/instagram" />
+                        <Redirect from="/" to="/viragram.me" />
                         <Route path="/:username" component={InstagramApp} />
                         {/* <Route path="*" component={ErrorNotFound} /> */}
                 </Router>

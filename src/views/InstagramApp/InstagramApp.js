@@ -105,7 +105,7 @@ export default class InstagramApp extends React.Component {
 
   componentDidMount() {
     var toFetchUsername = this.state.username;
-    toFetchUsername = toFetchUsername ? toFetchUsername : "instagram";
+    toFetchUsername = toFetchUsername ? toFetchUsername : "viragram";
     console.log(toFetchUsername);
     this.updateWithUsername(toFetchUsername);
   }
@@ -211,10 +211,10 @@ export default class InstagramApp extends React.Component {
               <h4>Like,Comment, Engagement through time</h4>
               <LikeCommentEngagementBLC data={this.state.Result} />
             </div>
-            <div className="col-md-12 mb-4">
+            {/* <div className="col-md-12 mb-4">
               <h4 className="Righteous">Engagement Calander</h4>
               <EngagementsCalander data={this.state.Result} />
-            </div>
+            </div> */}
             <div className="col-md-6 mb-4">
               <h4 className="Righteous">Media Types (Last 50 posts )</h4>
               <MediasTypesPC data={this.state.Result} />
