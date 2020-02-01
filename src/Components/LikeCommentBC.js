@@ -105,9 +105,10 @@ function LikeCommentBC(props) {
       Number(x.node.taken_at_timestamp + "000")
     ).toLocaleDateString();
   });
-  Chart.data.labels = Dates;
-  Chart.data.datasets[0].data = Likes;
-  Chart.data.datasets[1].data = Comments;
+
+  Chart.data.labels = [...Dates].reverse();;
+  Chart.data.datasets[0].data = [...Likes].reverse();
+  Chart.data.datasets[1].data = [...Comments].reverse();
 
   return (
     <div className="card">
