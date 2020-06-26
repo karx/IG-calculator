@@ -94,7 +94,7 @@ export default class TagApp extends React.Component {
 
   componentDidMount() {
     var toFetchUsername = this.state.username;
-    toFetchUsername = toFetchUsername ? toFetchUsername : "viragram";
+    toFetchUsername = toFetchUsername ? toFetchUsername : "football";
     console.log(toFetchUsername);
     this.updateWithUsername(toFetchUsername);
   }
@@ -179,14 +179,16 @@ export default class TagApp extends React.Component {
           </div>
           <br />
           {this.state.Result.map( (eachProfile) => {
+            
             return <div className="row">
-                      <div className="col-xl-4 col-xxl-5 col-lg-4">
-                        <ProfileCardv2
-                          bio={eachProfile.biography}
-                          fullname={eachProfile.full_name}
-                          picture={eachProfile.profile_pic_url_hd}
-                        />
-                      </div>
+                    <div className="col-xl-12 col-xxl-12 col-lg-12">
+                      <ProfileCardv2
+                        bio={eachProfile.biography}
+                        fullname={eachProfile.full_name}
+                        picture={eachProfile.profile_pic_url_hd}
+                      />
+                    </div>
+            
                     </div>
         
           })}
