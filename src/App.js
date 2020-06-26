@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "./Cards/NavBar";
 import InstagramApp from './views/InstagramApp/InstagramApp';
+import TagApp from './views/TagApp/TagApp';
 import ErrorNotFound from './views/ErrorNotFound';
 
 import { BrowserRouter as Router, Route, Link, Redirect, Switch  } from "react-router-dom";
@@ -22,7 +23,7 @@ export default class App extends React.Component {
                 <Router>
                     {/* <DefualtRoute component={App} /> */}
                         <Redirect from="/" to="/viragram.me" />
-                        <Route path="/:username" component={InstagramApp} />
+                        <Route path="/:username" component={TagApp} />
                         {/* <Route path="*" component={ErrorNotFound} /> */}
                 </Router>
             </div>
@@ -31,8 +32,7 @@ export default class App extends React.Component {
                     <p>It's in house and on the house. Copyright &copy;<a href="http://viragram.me">Viragram Media</a></p>
                 </div>
                 <div className="logo-div center">
-                <a href="https://viragram.me" class="center-a"> <img className="navbar-brand text-center brand-logo" src="viragram-logo-new.png" alt=""/> </a>
-
+                    <a href="https://viragram.me" class="center-a"> <img className="navbar-brand text-center brand-logo" src="viragram-logo-new.png" alt=""/> </a>
                 </div>
 
             </div>

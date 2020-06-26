@@ -3877,3 +3877,55 @@ export function FetchData(username) {
       });
   });
 }
+
+
+export async function fetchTagWiseData(tag) {
+  let relevent_profiles = await firestore.collection(`ig_users`).get()
+    .then( (profileSnapshopts) => {
+    
+
+    let profiles_with_tag = [];
+
+    profileSnapshopts.forEach((pProfile) => {
+      let profileData = pProfile.data();
+      // console.log(profileData);
+      
+      let relevenceScore = calcProfileRelevence(profileData,tag);
+      profileData.relevenceScoreOfTag = relevenceScore;
+      console.log(`${profileData.username} -> ${relevenceScore}`);
+      if (relevenceScore > 0) {
+        profiles_with_tag.push(profileData);
+      }
+    });
+
+    console.log(`We have ${profiles_with_tag.length} profiles with the tag`);
+    profiles_with_tag.sort( (a, b) => {
+      return a.relevenceScoreOfTag - b.relevenceScoreOfTag
+    })
+
+    return profiles_with_tag;
+  });
+  return relevent_profiles;
+
+}
+
+function calcProfileRelevence(profile,tag) {
+  let bioText = profile.biography;
+
+
+  let tag_count_in_medias = 0;
+  let media_array = profile.edge_owner_to_timeline_media.edges;
+  media_array.forEach( (media) => {
+    let mediaData = media.node;
+    if(mediaData.edge_media_to_caption.edges[0]) {
+      let mediaCaption = mediaData.edge_media_to_caption.edges[0].node.text;
+      let tagCount = mediaCaption.split(tag).length - 1;
+  
+      tag_count_in_medias += tagCount;
+    }
+    
+  });
+
+  return tag_count_in_medias;
+
+}
