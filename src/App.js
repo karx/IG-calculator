@@ -21,15 +21,15 @@ export default class App extends React.Component {
                 <NavBar />
               
                 <Router>
-                    {/* <DefualtRoute component={App} /> */}
-                        <Redirect from="/" to="/viragram.me" />
+                        <Route exact path="/" component={TagApp} />
                         <Route path="/:username" component={TagApp} />
+
                         {/* <Route path="*" component={ErrorNotFound} /> */}
                 </Router>
             </div>
             <div className="footer">
                 <div className="copyright">
-                    <p>It's in house and on the house. Copyright &copy;<a href="http://viragram.me">Viragram Media</a></p>
+                    <p>It's in house and on the house. Copyright &copy;<a href="http://viragram.me">Viragram Media</a></p> <p>Whats up Tanmay</p>
                 </div>
                 <div className="logo-div center">
                     <a href="https://viragram.me" class="center-a"> <img className="navbar-brand text-center brand-logo" src="viragram-logo-new.png" alt=""/> </a>
