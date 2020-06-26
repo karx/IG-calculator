@@ -3918,7 +3918,7 @@ function calcProfileRelevence(profile,tag) {
   media_array.forEach( (media) => {
     let mediaData = media.node;
     if(mediaData.edge_media_to_caption.edges[0]) {
-      let mediaCaption = mediaData.edge_media_to_caption.edges[0].node.text;
+      let mediaCaption = mediaData.edge_media_to_caption.edges[0].node.text.toLowerCase();
       let tagCount = mediaCaption.split(tag).length - 1;
   
       tag_count_in_medias += tagCount;
