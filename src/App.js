@@ -34,7 +34,7 @@ export default class App extends React.Component {
                     <p>Instagram Search tool. Copyright &copy;<a href="http://ruskmedia.com">Rusk Media</a></p> <p>Whats up Tanmay</p>
                 </div>
                 <div className="logo-div center">
-                    <a href="https://ruskmedia.com" class="center-a"> <img className="navbar-brand text-center brand-logo" src="/viragram-logo-new.png" alt=""/> </a>
+                    <a href="https://ruskmedia.com" class="center-a"> <img className="navbar-brand text-center brand-logo" src="/recharge_footer.png" alt=""/> </a>
                 </div>
 
             </div>
