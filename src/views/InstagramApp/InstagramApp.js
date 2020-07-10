@@ -105,7 +105,7 @@ export default class InstagramApp extends React.Component {
 
   componentDidMount() {
     var toFetchUsername = this.state.username;
-    toFetchUsername = toFetchUsername ? toFetchUsername : "viragram";
+    toFetchUsername = toFetchUsername ? toFetchUsername : "recharge_tech";
     console.log(toFetchUsername);
     this.updateWithUsername(toFetchUsername);
   }
