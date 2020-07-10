@@ -1,6 +1,9 @@
 import React from "react";
 import { FetchData, fetchTagWiseData } from "../../Instagram.js";
 import ProfileCardv2 from "../../Cards/ProfileCardv2";
+import ProfileSearchCard from "../../Cards/ProfileSearchCard";
+import ProfileSearchTable from "../../Cards/ProfileSearchTable";
+
 import FeaturesTable from "../../Components/FeaturesTable";
 import LikeCommentBC from "../../Components/LikeCommentBC";
 import MediasTypesPC from "../../Components/MediasTypesPC";
@@ -19,12 +22,12 @@ export default class TagApp extends React.Component {
     console.log(props);
     this.state = {
       isLoading: true,
-      username: props.match ? props.match.params.username : "instagram"
+      tag: props.match ? props.match.params.tag : "instagram"
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.usernametextInput = React.createRef();
+    this.tagtextInput = React.createRef();
   }
 
   handleInputChange(event) {
@@ -37,10 +40,10 @@ export default class TagApp extends React.Component {
     // });
   }
 
-  updateWithUsername(username) {
+  updateWithtag(tag) {
     this.setState({ isLoading: true });
-    this.setState({ username: username });
-    fetchTagWiseData(String(username)).then(x => {
+    this.setState({ tag: tag });
+    fetchTagWiseData(String(tag)).then(x => {
       console.log(':P');
       console.log(x);
       if (x.length > 0) {
@@ -69,8 +72,8 @@ export default class TagApp extends React.Component {
 
   handleClick(event) {
     try {
-      this.props.history.push("/tag/" + this.usernametextInput.current.value);
-      this.updateWithUsername(this.usernametextInput.current.value);
+      this.props.history.push("/tag/" + this.tagtextInput.current.value);
+      this.updateWithtag(this.tagtextInput.current.value);
     } catch (error) {
       console.log(error);
     }
@@ -83,9 +86,9 @@ export default class TagApp extends React.Component {
     // var parsed;
     // try {
     //   // parsed = queryString.parse(window.location.search);
-    //   // console.log(parsed.username);
-    //   this.setState({username: parsed.username});
-    //   return parsed.username;
+    //   // console.log(parsed.tag);
+    //   this.setState({tag: parsed.tag});
+    //   return parsed.tag;
     // } catch (error) {
     //   console.error(error);
     // }
@@ -93,10 +96,10 @@ export default class TagApp extends React.Component {
   }
 
   componentDidMount() {
-    var toFetchUsername = this.state.username;
-    toFetchUsername = toFetchUsername ? toFetchUsername : "football";
-    console.log(toFetchUsername);
-    this.updateWithUsername(toFetchUsername);
+    var toFetchtag = this.state.tag;
+    toFetchtag = toFetchtag ? toFetchtag : "football";
+    console.log(toFetchtag);
+    this.updateWithtag(toFetchtag);
   }
 
   render() {
@@ -144,7 +147,7 @@ export default class TagApp extends React.Component {
                       name="tag"
                       type="text"
                       placeholder={
-                        this.state.username ? this.state.username : "username"
+                        this.state.tag ? this.state.tag : "tag"
                       }
                       className="form-control"
                       // onChange={this.handleInputChange}
@@ -156,7 +159,7 @@ export default class TagApp extends React.Component {
                         borderRadius: "0",
                         borderBottom: "#000 solid 1px"
                       }}
-                      ref={this.usernametextInput}
+                      ref={this.tagtextInput}
                       onKeyPress={event => {
                         if (event.key === "Enter") {
                           this.handleClick();
@@ -178,11 +181,12 @@ export default class TagApp extends React.Component {
             </div>
           </div>
           <br />
-          {this.state.Result.map( (eachProfile) => {
+          < ProfileSearchTable data={this.state.Result}></ProfileSearchTable>
+          {/* {this.state.Result.map( (eachProfile) => {
             
             return <div className="row">
                     <div className="col-xl-12 col-xxl-12 col-lg-12">
-                      <ProfileCardv2
+                      <ProfileSearchCard
                         bio={eachProfile.biography}
                         fullname={eachProfile.full_name}
                         picture={eachProfile.profile_pic_url_hd}
@@ -191,7 +195,7 @@ export default class TagApp extends React.Component {
             
                     </div>
         
-          })}
+          })} */}
           
         </div>
       );

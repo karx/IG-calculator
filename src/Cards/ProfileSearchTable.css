@@ -1,0 +1,54 @@
+
+.container {
+  margin-bottom: 30px;
+}
+.img-size-profile {
+  height: 25px;
+}
+.st-table {
+  width: 100%;
+  border: 2px solid#464a53;
+
+}
+.st-table th {
+  background-color: #464a53;
+  color: #e3e3e3 !important;
+  text-align: center;
+}
+.st-table tr {
+  height: 30px;
+  text-align: center;
+}
+.profileBio {
+  text-align: left;
+}
+.st-table tr > :first-child{
+  height: 50px;
+  width: 50px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+.st-table th {
+  color: black;
+}
+.name-of-profile {
+  font-size: 1.8rem;
+  color: #464a53;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 20%;
+  text-align: left;
+}
+.profileCategory {
+  color: #3f3f3f;
+}
+.profileFollowCount {
+  color: #464a53;
+  font-weight: 600;
+}

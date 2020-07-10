@@ -31,10 +31,10 @@ export default class App extends React.Component {
             </div>
             <div className="footer">
                 <div className="copyright">
-                    <p>It's in house and on the house. Copyright &copy;<a href="http://viragram.me">Viragram Media</a></p> <p>Whats up Tanmay</p>
+                    <p>Instagram Search tool. Copyright &copy;<a href="http://ruskmedia.com">Rusk Media</a></p> <p>Whats up Tanmay</p>
                 </div>
                 <div className="logo-div center">
-                    <a href="https://viragram.me" class="center-a"> <img className="navbar-brand text-center brand-logo" src="viragram-logo-new.png" alt=""/> </a>
+                    <a href="https://ruskmedia.com" class="center-a"> <img className="navbar-brand text-center brand-logo" src="/viragram-logo-new.png" alt=""/> </a>
                 </div>
 
             </div>

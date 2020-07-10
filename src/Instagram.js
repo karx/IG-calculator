@@ -3900,7 +3900,7 @@ export async function fetchTagWiseData(tag) {
 
     console.log(`We have ${profiles_with_tag.length} profiles with the tag`);
     profiles_with_tag.sort( (a, b) => {
-      return a.relevenceScoreOfTag - b.relevenceScoreOfTag
+      return b.relevenceScoreOfTag - a.relevenceScoreOfTag
     })
 
     return profiles_with_tag;
