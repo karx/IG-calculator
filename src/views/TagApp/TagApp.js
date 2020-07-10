@@ -69,7 +69,7 @@ export default class TagApp extends React.Component {
 
   handleClick(event) {
     try {
-      this.props.history.push("/" + this.usernametextInput.current.value);
+      this.props.history.push("/tag/" + this.usernametextInput.current.value);
       this.updateWithUsername(this.usernametextInput.current.value);
     } catch (error) {
       console.log(error);
@@ -110,7 +110,7 @@ export default class TagApp extends React.Component {
           <img
             className="img-fluid mx-auto align-self-center loading-image"
             alt="loading"
-            src="./loading.png"
+            src="/loading.png"
           />
         </div>
       );
@@ -137,11 +137,11 @@ export default class TagApp extends React.Component {
                           color: "#000"
                         }}
                       >
-                        @
+                        Tag: 
                       </span>
                     </div>
                     <input
-                      name="username"
+                      name="tag"
                       type="text"
                       placeholder={
                         this.state.username ? this.state.username : "username"
@@ -205,7 +205,7 @@ export default class TagApp extends React.Component {
           <img
             className="img-fluid mx-auto align-self-center"
             alt="private-account"
-            src="./private.png"
+            src="/private.png"
           />
         </div>
       )
@@ -218,7 +218,7 @@ export default class TagApp extends React.Component {
           <img
             className="img-fluid mx-auto align-self-center"
             alt="no-account"
-            src="./no-account.png"
+            src="/no-account.png"
           />
         </div>
       )

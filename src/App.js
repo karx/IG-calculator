@@ -21,8 +21,10 @@ export default class App extends React.Component {
                 <NavBar />
               
                 <Router>
-                        <Route exact path="/" component={TagApp} />
-                        <Route path="/:username" component={TagApp} />
+                        <Route exact path="/" component={InstagramApp} />
+                        <Route exact path="/:username" component={InstagramApp} />
+                        <Route exact path="/tag/" component={TagApp} />
+                        <Route path="/tag/:username" component={TagApp} />
 
                         {/* <Route path="*" component={ErrorNotFound} /> */}
                 </Router>
