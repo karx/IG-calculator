@@ -1,0 +1,18 @@
+{
+  "name": "ig-admin",
+  "version": "1.0.0",
+  "description": "tool to refresh stats ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "admin"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase-admin": "^9.0.0",
+    "node-fetch": "^2.6.0"
+  }
+}
