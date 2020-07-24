@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "firebase-admin": "^9.0.0",
+    "node-cron": "^2.0.3",
     "node-fetch": "^2.6.0"
   }
 }
