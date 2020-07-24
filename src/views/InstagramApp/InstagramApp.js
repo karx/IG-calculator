@@ -12,6 +12,8 @@ import MediasTable from "../../Components/MediasTable";
 import MentionsTable from "../../Components/MentionsTable";
 import HashtagsTable from "../../Components/HashtagsTable";
 import TopPostEmbed from "../../Components/TopPostEmbed";
+import Selector from "../../Cards/Selector";
+
 // const queryString = require('query-string');
 
 export default class InstagramApp extends React.Component {
@@ -111,6 +113,7 @@ export default class InstagramApp extends React.Component {
   }
 
   render() {
+
     if (this.state.isLoading) {
       // if (true) {
       // if (false) {
@@ -129,6 +132,7 @@ export default class InstagramApp extends React.Component {
     if (this.state.isReady) {
       return (
         <div className="container">
+          <Selector selected="profile" />
           <div className="row">
             <div className="col">
               <div

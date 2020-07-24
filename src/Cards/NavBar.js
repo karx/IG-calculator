@@ -6,4 +6,5 @@ export default () => (
     
     <a href="/" class="a-ref"> <img className="navbar-brand text-center brand-logo" src="/ig_logo_black.png" alt=""/> </a>
   </nav>
+
 );

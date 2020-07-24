@@ -14,6 +14,7 @@ import MediasTable from "../../Components/MediasTable";
 import MentionsTable from "../../Components/MentionsTable";
 import HashtagsTable from "../../Components/HashtagsTable";
 import TopPostEmbed from "../../Components/TopPostEmbed";
+import Selector from "../../Cards/Selector";
 
 export default class TagApp extends React.Component {
   constructor(props) {
@@ -121,6 +122,7 @@ export default class TagApp extends React.Component {
     if (this.state.isReady) {
       return (
         <div className="container">
+          <Selector selected="tag" />
           <div className="row">
             <div className="col">
               <div

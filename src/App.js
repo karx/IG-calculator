@@ -19,19 +19,19 @@ export default class App extends React.Component {
         <div className="container-fluid">
             <div className="container-first">
                 <NavBar />
-              
+
                 <Router>
                         <Route exact path="/" component={InstagramApp} />
                         <Route exact path="/:username" component={InstagramApp} />
                         <Route exact path="/tag/" component={TagApp} />
-                        <Route path="/tag/:username" component={TagApp} />
+                        <Route path="/tag/:tag" component={TagApp} />
 
                         {/* <Route path="*" component={ErrorNotFound} /> */}
                 </Router>
             </div>
             <div className="footer">
                 <div className="copyright">
-                    <p>Instagram Search tool. Copyright &copy;<a href="http://ruskmedia.com">Rusk Media</a></p> <p>Whats up Tanmay</p>
+                    <p>Instagram Search tool. Copyright &copy;<a href="http://ruskmedia.com">Rusk Media</a></p>
                 </div>
                 <div className="logo-div center">
                     <a href="https://ruskmedia.com" class="center-a"> <img className="navbar-brand text-center brand-logo" src="/recharge_footer.png" alt=""/> </a>

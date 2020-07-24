@@ -94,7 +94,7 @@ export async function fetchTagWiseData(tag) {
     
 
     let profiles_with_tag = [];
-
+      console.log(`TAG === ${tag}`);
     profileSnapshopts.forEach((pProfile) => {
       let profileData = pProfile.data();
       // console.log(profileData);
@@ -102,7 +102,7 @@ export async function fetchTagWiseData(tag) {
       let relevenceScore = calcProfileRelevence(profileData,tag);
       profileData.relevenceScoreOfTag = relevenceScore;
       console.log(`${profileData.username} -> ${relevenceScore}`);
-      if (relevenceScore > 0) {
+      if (relevenceScore > 0 || tag === 'a') {
         profiles_with_tag.push(profileData);
       }
     });
@@ -119,10 +119,10 @@ export async function fetchTagWiseData(tag) {
 }
 
 function calcProfileRelevence(profile,tag) {
-  let bioText = profile.biography;
+  let bioText = profile.biography.toLowerCase();
 
 
-  let tag_count_in_medias = 0;
+  let tag_count_in_medias = bioText.split(tag).length - 1;
   let media_array = profile.edge_owner_to_timeline_media.edges;
   media_array.forEach( (media) => {
     let mediaData = media.node;
@@ -131,6 +131,7 @@ function calcProfileRelevence(profile,tag) {
       let tagCount = mediaCaption.split(tag).length - 1;
   
       tag_count_in_medias += tagCount;
+      
     }
     
   });
