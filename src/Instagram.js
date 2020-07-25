@@ -120,7 +120,7 @@ export async function fetchTagWiseData(tag) {
 
 function calcProfileRelevence(profile,tag) {
   let bioText = profile.biography.toLowerCase();
-
+  tag = tag.toLowerCase();
 
   let tag_count_in_medias = bioText.split(tag).length - 1;
   let media_array = profile.edge_owner_to_timeline_media.edges;
