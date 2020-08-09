@@ -16,6 +16,9 @@ import HashtagsTable from "../../Components/HashtagsTable";
 import TopPostEmbed from "../../Components/TopPostEmbed";
 import Selector from "../../Cards/Selector";
 
+import "./TagApp.css";
+
+
 export default class TagApp extends React.Component {
   constructor(props) {
     super(props);
@@ -81,18 +84,7 @@ export default class TagApp extends React.Component {
   }
 
   queryParametersIfName() {
-    // console.log(window.location.search);
-    // console.log(window.location.search);
-    // //=> '?foo=bar'
-    // var parsed;
-    // try {
-    //   // parsed = queryString.parse(window.location.search);
-    //   // console.log(parsed.tag);
-    //   this.setState({tag: parsed.tag});
-    //   return parsed.tag;
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    
     return null;
   }
 
@@ -220,12 +212,17 @@ export default class TagApp extends React.Component {
       return (
         <div className="h-100 container-fluid text-center align-content-center">
           {/* <br /> */}
-          <h1 className="text-center">Profile Not found</h1>
-          <img
-            className="img-fluid mx-auto align-self-center"
-            alt="no-account"
-            src="/no-account.png"
-          />
+          <Selector selected="tag" />
+
+          <div className="not-container">
+            <h1 className="text-center">No Profile found with the tag: {this.state.tag}</h1>
+            <img
+              className="img-fluid mx-auto align-self-center"
+              alt="no-account"
+              src="/no-account.png"
+            />
+          </div>
+          
         </div>
       )
     }

@@ -14,6 +14,8 @@ import HashtagsTable from "../../Components/HashtagsTable";
 import TopPostEmbed from "../../Components/TopPostEmbed";
 import Selector from "../../Cards/Selector";
 
+import "./InstagramApp.css";
+
 // const queryString = require('query-string');
 
 export default class InstagramApp extends React.Component {
@@ -253,12 +255,16 @@ export default class InstagramApp extends React.Component {
       return (
         <div className="h-100 container-fluid text-center align-content-center">
           {/* <br /> */}
-          <h1 className="text-center">This profile is private.</h1>
-          <img
-            className="img-fluid mx-auto align-self-center"
-            alt="private-account"
-            src="./private.png"
-          />
+          <Selector selected="tag" />
+
+          <div className="not-container">
+            <h1 className="text-center">This profile is private.</h1>
+            <img
+              className="img-fluid mx-auto align-self-center"
+              alt="private-account"
+              src="./private.png"
+            />
+          </div>
         </div>
       )
     }
@@ -266,12 +272,16 @@ export default class InstagramApp extends React.Component {
       return (
         <div className="h-100 container-fluid text-center align-content-center">
           {/* <br /> */}
-          <h1 className="text-center">Profile Not found</h1>
-          <img
-            className="img-fluid mx-auto align-self-center"
-            alt="no-account"
-            src="./no-account.png"
-          />
+          <Selector selected="tag" />
+
+          <div className="not-container">
+            <h1 className="text-center">Profile Not found</h1>
+            <img
+              className="img-fluid mx-auto align-self-center"
+              alt="no-account"
+              src="./no-account.png"
+            />
+          </div>
         </div>
       )
     }

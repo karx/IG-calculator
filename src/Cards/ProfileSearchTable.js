@@ -28,7 +28,7 @@ function ProfileSearchTable(props) {
                   alt=""
                 />
               </td>
-              <td className="name-of-profile mt-4"><a href={'../' + profile.username}>{profile.full_name} </a> </td>
+              <td className="name-of-profile mt-4"><a href={(profile.is_private ? 'https://instagram.com/' : '../') + profile.username}>{profile.full_name} </a> </td>
               <td className="profileBio">{profile.biography}</td>
               <td className="profileCategory">{profile.business_category_name}</td>
               <td>{profile.relevenceScoreOfTag}</td>
