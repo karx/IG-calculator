@@ -4,7 +4,7 @@ exports.handler = async function(event, context) {
     
     let data = await fetch('https://www.instagram.com/trippy/?__a=1');
     console.log({event});
-    let bodyData = data.json();
+    let bodyData = await data.json();
 
     console.log({bodyData});
     return {
