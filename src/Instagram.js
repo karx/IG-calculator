@@ -3811,7 +3811,13 @@ export function FetchData(username) {
   //   });
   // });
   return new Promise((resolve, reject) => {
-    fetch("https://www.instagram.com/" + username + "/?__a=1")
+    fetch("https://www.instagram.com/" + username + "/?__a=1", {
+      method: "GET",
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
       .then((data) => {
         console.log("Data: ", data);
         // console.log("DataJson: ", data.json());
