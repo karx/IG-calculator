@@ -12,7 +12,7 @@
     "react-dom": "^16.9.0",
     "react-instagram-embed": "^1.5.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.0",
+    "react-scripts": "5.0.1",
     "react-wordcloud": "^1.0.8"
   },
   "scripts": {
